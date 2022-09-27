@@ -1,20 +1,21 @@
 import React from "react";
 import { client } from "../lib/client";
-import { Prodct, FooterBanner, HeroBanner } from "../components";
+import { Product, FooterBanner, HeroBanner } from "../components";
 
 const Home = ({ products, bannerData }) => {
   return (
     <>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
-      {console.log(bannerData)}
       <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Speakers of many variations</p>
       </div>
       <div className="products-container">
-        {products?.map((product) => product.name)}
+        {products?.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData && bannerData[0]}/>
     </>
   );
 };
